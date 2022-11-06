@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -56,8 +56,8 @@ export class SimulatorComponent implements OnInit {
       //push data into our resukt array
       this.result.push({
         year: index,
-        returnPercentage,
-        monthlyIncome,
+        returnPercentage: returnPercentage.toFixed(2),
+        monthlyIncome: monthlyIncome.toFixed(2),
       });
     }
   };

@@ -34,7 +34,7 @@
           <div class="py-5 bg-secondary mt-50">
             <form (ngSubmit)="calculate()" #form="ngForm">
               <div class="container">
-                <!-- Inputs (alternative) -->
+                <!-- Inputs  -->
                 <div class="mb-3">
                   <small class="text-uppercase font-weight-bold"
                     >Simulator</small
@@ -103,40 +103,65 @@
                 </div>
               </div>
               <div class="row justify-content-center">
-                <button nbButton fullWidth status="primary" size="large">
-                  Calculate
+                <button
+                  nbButton
+                  fullWidth
+                  status="primary"
+                  size="large"
+                  class="btn btn-sm btn-default"
+                >
+                  <span class="btn-inner--icon">
+                    <i class="fa fa-calculator mr-2"></i>
+                  </span>
+                  <span class="nav-link-inner--text">Simulate</span>
                 </button>
               </div>
             </form>
           </div>
         </div>
-        <div class="mt-5 py-5 border-top text-center">
-          <div class="row justify-content-center">
-            <div class="col-lg-9">
-              <p>explain the simulator and each field</p>
-            </div>
-          </div>
-        </div>
-        <div class="mt-5 py-5 border-top text-center">
-          <div class="row justify-content-center">
-            <table *ngIf="result.length > 0" class="table table-striped">
+
+        <div class="mt-5 py-5 border-top text-center" *ngIf="result.length > 0">
+          <div class="row justify-content-center full-width">
+            <table class="table table-striped half-width">
               <thead>
-                <tr>
-                  <th># Year</th>
-                  <th>Return</th>
-                  <th>Monthly Income</th>
-                </tr>
+                <tr></tr>
               </thead>
-              <div *ngFor="let res of result">
-                <tbody>
+              <div
+                *ngFor="let res of result"
+                class="text-center justify-content-center"
+              >
+                <tbody class="text-center justify-content-center">
                   <tr>
-                    <td>{{ res.year }}</td>
-                    <td>{{ res.returnPercentage }} %</td>
-                    <td>{{ res.monthlyIncome }}</td>
+                    <td>Year {{ res.year }}</td>
+                    <td>Return {{ res.returnPercentage }} %</td>
+                    <td>{{ res.monthlyIncome }} (monthly income)</td>
                   </tr>
                 </tbody>
               </div>
             </table>
+          </div>
+        </div>
+        <div class="mt-5 py-5 border-top justify-content-center">
+          <div class="row ml-5">
+            <div class="col-lg-9">
+              <p>
+                Purchase price : the exact amount that you purshased your
+                property with, EXP: 150000
+              </p>
+            </div>
+          </div>
+          <div class="row ml-5">
+            <div class="col-lg-9">
+              <p>
+                Monthly rent : the exact amount of monthly rent of your
+                property, EXP: 650
+              </p>
+            </div>
+          </div>
+          <div class="row ml-5">
+            <div class="col-lg-9">
+              <p>Annual fees : all rental fees (except agency fees)</p>
+            </div>
           </div>
         </div>
       </div>
