@@ -1,18 +1,27 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
+
+import { SimulatorModule } from './simulator/simulator.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent, NavbarComponent, FooterComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    NgbModule,
+    FormsModule,
+    RouterModule,
+    AppRoutingModule,
+    SimulatorModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

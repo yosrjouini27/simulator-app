@@ -1,0 +1,145 @@
+<main class="profile-page">
+  <section class="section-profile-cover section-shaped my-0">
+    <!-- Circles background -->
+    <div class="shape shape-style-1 shape-primary alpha-4">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <!-- SVG separator -->
+    <div class="separator separator-bottom separator-skew">
+      <svg
+        x="0"
+        y="0"
+        viewBox="0 0 2560 100"
+        preserveAspectRatio="none"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="card card-profile shadow mt--300">
+        <div class="px-4">
+          <div class="row justify-content-center">
+            <div class="col-lg-3 order-lg-2"></div>
+          </div>
+          <div class="py-5 bg-secondary mt-50">
+            <form (ngSubmit)="calculate()" #form="ngForm">
+              <div class="container">
+                <!-- Inputs (alternative) -->
+                <div class="mb-3">
+                  <small class="text-uppercase font-weight-bold"
+                    >Simulator</small
+                  >
+                </div>
+                <div class="row justify-content-center">
+                  <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        id="purchasePrice"
+                        name="purchasePrice"
+                        placeholder="Purchase price"
+                        [(ngModel)]="simulator.purchasePrice"
+                        #PurchasePrice
+                        required
+                        class="form-control form-control-alternative"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        placeholder="Rent (per month)"
+                        id="monthlyRent"
+                        name="monthlyRent"
+                        [(ngModel)]="simulator.monthlyRent"
+                        #MonthlyRent
+                        class="form-control form-control-alternative"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="col-lg-4 col-sm-6">
+                  <div class="form-group has-success">
+                    <input
+                      type="text"
+                      placeholder="Success"
+                      class="form-control form-control-alternative is-valid"
+                    />
+                  </div>
+                  <div class="form-group has-danger">
+                    <input
+                      type="email"
+                      placeholder="Error Input"
+                      class="form-control form-control-alternative is-invalid"
+                    />
+                  </div>
+                </div> -->
+                <div class="row justify-content-center">
+                  <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        placeholder="Annual rental fee"
+                        id="annualFee"
+                        name="annualFee"
+                        [(ngModel)]="simulator.annualFee"
+                        #AnnualFee
+                        class="form-control form-control-alternative"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <button nbButton fullWidth status="primary" size="large">
+                  Calculate
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="mt-5 py-5 border-top text-center">
+          <div class="row justify-content-center">
+            <div class="col-lg-9">
+              <p>explain the simulator and each field</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 py-5 border-top text-center">
+          <div class="row justify-content-center">
+            <table *ngIf="result.length > 0" class="table table-striped">
+              <thead>
+                <tr>
+                  <th># Year</th>
+                  <th>Return</th>
+                  <th>Monthly Income</th>
+                </tr>
+              </thead>
+              <div *ngFor="let res of result">
+                <tbody>
+                  <tr>
+                    <td>{{ res.year }}</td>
+                    <td>{{ res.returnPercentage }} %</td>
+                    <td>{{ res.monthlyIncome }}</td>
+                  </tr>
+                </tbody>
+              </div>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
