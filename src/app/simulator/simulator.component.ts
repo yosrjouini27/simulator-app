@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-  NgForm,
-  FormControl,
-} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-simulator',
   templateUrl: './simulator.component.html',
@@ -15,8 +9,10 @@ export class SimulatorComponent implements OnInit {
   result: Array<any> = [];
   fields: any = {};
   simulator: any = {};
-
-  constructor(fb: FormBuilder) {}
+  simulatorForm!: FormGroup;
+  constructor(private formBuilder: FormBuilder) {
+    this.createForm();
+  }
   /**
    * function calculate, the on submit fn of the form, we'll be called once we
    * click calculate button
@@ -63,4 +59,14 @@ export class SimulatorComponent implements OnInit {
   };
 
   ngOnInit() {}
+  /**
+   * create form will build our form and check for the validators
+   */
+  createForm() {
+    this.simulatorForm = this.formBuilder.group({
+      purchasePrice: ['', Validators.required],
+      annualFee: ['', Validators.required],
+      monthlyRent: ['', Validators.required],
+    });
+  }
 }

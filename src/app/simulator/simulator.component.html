@@ -44,7 +44,7 @@
                   <div class="col-lg-4 col-sm-6">
                     <div class="form-group">
                       <input
-                        type="text"
+                        type="number"
                         id="purchasePrice"
                         name="purchasePrice"
                         placeholder="Purchase price"
@@ -53,51 +53,75 @@
                         required
                         class="form-control form-control-alternative"
                       />
+                      <div
+                        *ngIf="
+                          simulator.purchasePrice?.invalid &&
+                          simulator.purchasePrice?.touched
+                        "
+                      >
+                        <p
+                          class="error-message"
+                          *ngIf="simulator.purchasePrice.errors?.required"
+                        >
+                          Purchase price is required
+                        </p>
+                      </div>
                     </div>
                   </div>
                   <div class="col-lg-4 col-sm-6">
                     <div class="form-group">
                       <input
-                        type="text"
+                        type="number"
                         placeholder="Rent (per month)"
                         id="monthlyRent"
                         name="monthlyRent"
                         [(ngModel)]="simulator.monthlyRent"
                         #MonthlyRent
+                        required
                         class="form-control form-control-alternative"
                       />
+                      <div
+                        *ngIf="
+                          simulator.monthlyRent?.invalid &&
+                          simulator.monthlyRent?.touched
+                        "
+                      >
+                        <p
+                          class="error-message"
+                          *ngIf="simulator.monthlyRent.errors?.required"
+                        >
+                          Monthly rent is required
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-
-                <!-- <div class="col-lg-4 col-sm-6">
-                  <div class="form-group has-success">
-                    <input
-                      type="text"
-                      placeholder="Success"
-                      class="form-control form-control-alternative is-valid"
-                    />
-                  </div>
-                  <div class="form-group has-danger">
-                    <input
-                      type="email"
-                      placeholder="Error Input"
-                      class="form-control form-control-alternative is-invalid"
-                    />
-                  </div>
-                </div> -->
                 <div class="row justify-content-center">
                   <div class="col-lg-4 col-sm-6">
                     <div class="form-group">
                       <input
-                        type="text"
+                        type="number"
                         placeholder="Annual rental fee"
                         id="annualFee"
                         name="annualFee"
                         [(ngModel)]="simulator.annualFee"
                         #AnnualFee
+                        required
                         class="form-control form-control-alternative"
                       />
+                      <div
+                        *ngIf="
+                          simulator.annualFee?.invalid &&
+                          simulator.annualFee?.touched
+                        "
+                      >
+                        <p
+                          class="error-message"
+                          *ngIf="simulator.annualFee.errors?.required"
+                        >
+                          Annual fee is required
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -109,6 +133,7 @@
                   status="primary"
                   size="large"
                   class="btn btn-sm btn-default"
+                  [disabled]="!form.valid"
                 >
                   <span class="btn-inner--icon">
                     <i class="fa fa-calculator mr-2"></i>
